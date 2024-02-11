@@ -15,10 +15,11 @@ def is_perfect_square(number):
 def is_number_fibonnaci(numberToFind):
     if numberToFind == 0:
         return True
-    return is_perfect_square(5 * numberToFind * numberToFind + 4) or is_perfect_square(5 * numberToFind * numberToFind - 4)
-        
-for i in range(10):
-    if is_number_fibonnaci(i) == True:
-        print("{} is fibonnaci".format(i))
-    else:
-        print("{} not fibonnaci".format(i))
+    a, b, c = 0, 1, 1
+    list = [a,b,c]
+    while c < numberToFind:
+        a = b
+        b = c
+        c = a + b
+        list.append(c)
+    return [c == numberToFind or is_perfect_square(5 * numberToFind * numberToFind + 4) or is_perfect_square(5 * numberToFind * numberToFind - 4), list]
